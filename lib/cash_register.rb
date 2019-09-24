@@ -9,7 +9,11 @@ def initialize(discount = 0)
 end
 
 def add_item(title, price, quantity = 1)
-@total += quantity * price
+    @total += quantity * price
+    @last_transaction = quantity * price
+    quantity.times {@items << title}
+    @items
+
 end
 
 def apply_discount
@@ -22,9 +26,9 @@ def apply_discount
     end
 end
 
-def items
-    @items 
+def void_last_transaction
     
+    @total -= @last_transaction
 end
 
 
